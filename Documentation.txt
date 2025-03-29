@@ -1,0 +1,114 @@
+# Library Management System Documentation
+
+## Introduction
+The **Library Management System** is designed to manage books and users efficiently. It supports both **E-Books** and **Printed Books**, allowing users to interact with the library by adding, deleting, and updating books and users.
+
+## Classes Overview
+
+### 1. **Book (Abstract Base Class)**
+#### Purpose:
+Represents a generic book with common attributes and methods.
+#### Attributes:
+- `title` (string) - Name of the book.
+- `author` (string) - Name of the author.
+- `ISBN` (string) - Unique identifier for the book.
+- `price` (double) - Price of the book.
+#### Methods:
+- `displayInfo()` - Prints book details.
+- `isEqual(const Book&)` - Checks if two books are the same.
+- Getters for all attributes.
+
+### 2. **EBook (Derived from Book)**
+#### Additional Attributes:
+- `fileSize` (double) - Size of the eBook file in MB.
+- `format` (string) - Format of the eBook (e.g., PDF, EPUB).
+#### Overridden Methods:
+- `displayInfo()` - Displays additional eBook-specific details.
+
+### 3. **PrintedBook (Derived from Book)**
+#### Additional Attributes:
+- `numOfPages` (int) - Number of pages in the printed book.
+#### Overridden Methods:
+- `displayInfo()` - Displays additional printed book-specific details.
+
+### 4. **User**
+#### Purpose:
+Represents a library user with basic credentials.
+#### Attributes:
+- `username` (string) - Name of the user.
+- `email` (string) - Email ID of the user.
+- `password` (string) - Password for authentication.
+#### Methods:
+- `displayInfo()` - Displays user details.
+- `isEqual(const User&)` - Compares two users.
+- Getters for all attributes.
+
+### 5. **Library**
+#### Purpose:
+Manages users and books in the library.
+#### Attributes:
+- `name` (string) - Library name.
+- `users` (vector<User>) - List of registered users.
+- `books` (vector<Book*>) - List of books in the library.
+#### Methods:
+- `addUser(const User&)` - Adds a new user.
+- `deleteUser(const User&)` - Removes an existing user.
+- `updateUser(const User&, const User&)` - Updates user details.
+- `addBook(Book*)` - Adds a new book.
+- `deleteBook(const Book&)` - Removes an existing book.
+- `updateBook(const Book&, const Book&)` - Updates book details.
+- `displayUsers()` - Displays all users.
+- `displayBooks()` - Displays all books.
+
+## Example Usage
+```cpp
+#include <iostream>
+#include "Library.h"
+#include "PrintedBook.h"
+#include "EBook.h"
+
+int main() {
+    Library myLibrary("Central Library");
+    
+    // Create books
+    Book* book1 = new PrintedBook("C++ Primer", "Lippman", "123456", 35.5, 970);
+    Book* book2 = new EBook("Effective C++", "Scott Meyers", "789101", 20.0, 5.2, "PDF");
+    
+    // Add books
+    myLibrary.addBook(book1);
+    myLibrary.addBook(book2);
+    
+    // Create users
+    User user1("JohnDoe", "john@example.com", "password123");
+    myLibrary.addUser(user1);
+    
+    // Display details
+    myLibrary.displayBooks();
+    myLibrary.displayUsers();
+    
+    // Clean up dynamically allocated memory
+    delete book1;
+    delete book2;
+    
+    return 0;
+}
+```
+
+## Memory Management
+- The destructor of `Library` ensures all dynamically allocated books are deleted to prevent memory leaks.
+- When adding books, use `new` to allocate memory and `delete` to free it when no longer needed.
+
+## Future Improvements
+- Implement a **search feature** for books and users.
+- Add **borrow/return functionality** for users.
+- Use **smart pointers** (`std::unique_ptr`) instead of raw pointers for better memory management.
+
+## How to Compile & Run
+```sh
+g++ -o library_system main.cpp Library.cpp Book.cpp PrintedBook.cpp EBook.cpp User.cpp -std=c++11
+./library_system
+```
+
+---
+This documentation provides an overview of the system, its components, and how they interact. Let me know if you need any modifications or additions! 🚀
+
