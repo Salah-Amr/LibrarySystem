@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "e:/Projects/Fundamintals/oop/library_system/cmake-build-debug"
+			"value" : "e:/Projects/Fundamintals/oop/LibrarySystem/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/Projects/Fundamintals/oop/library_system/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "E:/Projects/Fundamintals/oop/LibrarySystem/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/Projects/Fundamintals/oop/library_system"
+			"value" : "E:/Projects/Fundamintals/oop/LibrarySystem"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1291,7 +1291,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/Projects/Fundamintals/oop/library_system/cmake-build-debug"
+			"value" : "E:/Projects/Fundamintals/oop/LibrarySystem/cmake-build-debug"
 		},
 		{
 			"name" : "cpp_IS_TOP_LEVEL",
@@ -1315,7 +1315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/Projects/Fundamintals/oop/library_system"
+			"value" : "E:/Projects/Fundamintals/oop/LibrarySystem"
 		}
 	],
 	"kind" : "cache",

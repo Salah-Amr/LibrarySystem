@@ -1,4 +1,4 @@
-# Install script for directory: E:/Projects/Fundamintals/oop/library_system
+# Install script for directory: E:/Projects/Fundamintals/oop/LibrarySystem
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/Projects/Fundamintals/oop/library_system/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/Projects/Fundamintals/oop/LibrarySystem/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

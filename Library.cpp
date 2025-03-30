@@ -1,14 +1,11 @@
 #include "Library.h"
 Library::Library() {
     name = "";
-    maximumBooksSize = maximumUsersSize = 0;
-    books = {};
-    users = {};
 }
 Library::Library(string name) : name(name) {
 
 };
-Library::Library(string name, vector <Book> books, vector <User> users) : name(name), books(books), users(users) {
+Library::Library(string name, vector <Book> books, vector <User> users) : name(name), userManagement(users), bookManagement(books) {
 
 };
 Library::~Library() {
@@ -16,22 +13,20 @@ Library::~Library() {
 }
 void Library::displayInfo() const {
     cout << "Library Name: " << name << '\n';
-    cout << "Number of users: " << maximumUsersSize << '\n';
+    cout << "Number of users: " << userManagement.getMaximumUsersSize() << '\n';
     cout << "Users: " << '\n';
-    for (const User& user: users) { user.displayInfo(); }
-    cout << "Number of books: " << maximumBooksSize << '\n';
+    for (const User& user: userManagement.getUsers()) { user.displayInfo(); }
+    cout << "Number of books: " << bookManagement.getMaximumBoosSize() << '\n';
     cout << "Books: " << '\n';
-    for (const Book& book: books) { book.displayInfo(); }
+    for (const Book& book: bookManagement.getBooks()) { book.displayInfo(); }
 }
 void Library::addUser(const User& newUser) {
-    users.emplace_back(newUser);
-    maximumUsersSize = (int)users.size();
-    cout << "user added successfully\n";
+    userManagement.addUser(newUser);
 }
 void Library::deleteUser(const User& targetUser) {
     int index = -1;
-    for (int i = 0; i < maximumUsersSize; i++) {
-        if (users[i].isEqual(targetUser)) {
+    for (int i = 0; i < userManagement.getMaximumUsersSize(); i++) {
+        if (userManagement.getUsers()[i].isEqual(targetUser)) {
             index = i;
             break;
         }
@@ -40,18 +35,17 @@ void Library::deleteUser(const User& targetUser) {
         cout << "user not found\n";
     }
     else {
-        for (int i = index; i < maximumUsersSize - 1; i++) {
-            users[i] = users[i + 1];
+        for (int i = index; i < userManagement.getMaximumUsersSize() - 1; i++) {
+            userManagement.getUsers()[i] = userManagement.getUsers()[i + 1];
         }
-        users.pop_back();
-        maximumUsersSize--;
+        userManagement.deleteUser(userManagement.getUsers().back());
         cout << "user deleted successfully\n";
     }
 }
 void Library::updateUser(const User& oldUser, const User& user) {
     int index = -1;
-    for (int i = 0; i < maximumUsersSize; i++) {
-        if (users[i].isEqual(oldUser)) {
+    for (int i = 0; i < userManagement.getMaximumUsersSize(); i++) {
+        if (userManagement.getUsers()[i].isEqual(oldUser)) {
             index = i;
             break;
         }
@@ -60,68 +54,34 @@ void Library::updateUser(const User& oldUser, const User& user) {
         cout << "user not found\n";
     }
     else {
-        users[index] = user;
+        userManagement.updateUser(userManagement.getUsers()[index], user);
         cout << "user updated successfully\n";
     }
 }
 void Library::addBook(const Book& newBook) {
-    books.emplace_back(newBook);
-    maximumBooksSize = (int)books.size();
-    cout << "book added successfully\n";
+    bookManagement.addBook(newBook);
 }
 void Library::addBook(Book* newBook) {
-    books.emplace_back(*newBook);
-    maximumBooksSize = (int)books.size();
-    cout << "book added successfully\n";
+    bookManagement.addBook(*newBook);
 }
 void Library::deleteBook(const Book& targetBook) {
-    int index = -1;
-    for (int i = 0; i < maximumBooksSize; i++) {
-        if (books[i].isEqual(targetBook)) {
-            index = i;
-            break;
-        }
-    }
-    if (index == -1) {
-        cout << "book not found\n";
-    }
-    else {
-        for (int i = index; i < maximumBooksSize - 1; i++) {
-            books[i] = books[i + 1];
-        }
-        books.pop_back();
-        maximumBooksSize--;
-        cout << "book deleted successfully\n";
-    }
+    bookManagement.deleteBook(targetBook);
 }
 void Library::updateBook(const Book& oldBook, const Book& book) {
-    int index = -1;
-    for (int i = 0; i < maximumBooksSize; i++) {
-        if (books[i].isEqual(oldBook)) {
-            index = i;
-            break;
-        }
-    }
-    if (index == -1) {
-        cout << "book not found\n";
-    }
-    else {
-        books[index] = book;
-        cout << "book updated successfully\n";
-    }
+    bookManagement.updateBook(oldBook, book);
 }
 void Library::displayUsers() const {
-    for (const User& user : users) {
+    for (const User& user : userManagement.getUsers()) {
         user.displayInfo();
     }
 }
 void Library::displayBooks() const {
-    for (const Book& book : books) {
+    for (const Book& book : bookManagement.getBooks()) {
         book.displayInfo();
     }
 }
 string Library::getName() const { return name; }
-vector <Book> Library::getBooks() const { return books; }
-vector <User> Library::getUsers() const { return users; }
-int Library::getMaximumUsersSize() const { return maximumUsersSize; }
-int Library::getMaximumBoosSize() const { return maximumBooksSize; }
+vector <Book> Library::getBooks() const { return bookManagement.getBooks(); }
+vector <User> Library::getUsers() const { return userManagement.getUsers(); }
+int Library::getMaximumUsersSize() const { return userManagement.getMaximumUsersSize(); }
+int Library::getMaximumBoosSize() const { return bookManagement.getMaximumBoosSize(); }

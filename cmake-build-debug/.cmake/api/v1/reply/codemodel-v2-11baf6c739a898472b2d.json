@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/Projects/Fundamintals/oop/library_system/cmake-build-debug",
-		"source" : "E:/Projects/Fundamintals/oop/library_system"
+		"build" : "E:/Projects/Fundamintals/oop/LibrarySystem/cmake-build-debug",
+		"source" : "E:/Projects/Fundamintals/oop/LibrarySystem"
 	},
 	"version" : 
 	{

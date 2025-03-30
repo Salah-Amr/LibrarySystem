@@ -6,13 +6,13 @@
 #include <iterator>
 #include "Book.h"
 #include "User.h"
+#include "UserManagement.h"
+#include "BookManagement.h"
 class Library {
 private:
     string name;
-    int maximumBooksSize;
-    int maximumUsersSize;
-    vector <Book> books;
-    vector <User> users;
+    UserManagement userManagement;
+    BookManagement bookManagement;
 public:
     Library();
     Library(string name);
