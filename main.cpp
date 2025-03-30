@@ -15,9 +15,9 @@ int main() {
     Book* book1 = new PrintedBook("C++ Primer", "Lippman", "123456", 35.5, 970);
     Book* book2 = new EBook("Effective C++", "Scott Meyers", "789101", 20.0, 5.2, "PDF");
     Book* book3 = new PrintedBook("Design Patterns", "GoF", "112233", 40.0, 395);
-    myLibrary->addBook(book1);
-    myLibrary->addBook(book2);
-    myLibrary->addBook(book3);
+    myLibrary->addBook(*book1);
+    myLibrary->addBook(*book2);
+    myLibrary->addBook(*book3);
     delete book1;
     delete book2;
     delete book3;

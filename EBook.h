@@ -8,6 +8,7 @@ private:
     string format;
 public:
     EBook(const string& title, const string& author, const string& ISBN, double price, double fileSize, const string& format);
+    EBook();
     void displayInfo() const override;
 };
 #endif

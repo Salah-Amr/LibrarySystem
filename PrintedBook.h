@@ -8,6 +8,7 @@ private:
     int numOfPages;
 public:
     PrintedBook(const string& title, const string& author, const string& ISBN, double price, int pages);
+    PrintedBook();
     void displayInfo() const override;
 };
 #endif //CPP_PRINTEDBOOK_H

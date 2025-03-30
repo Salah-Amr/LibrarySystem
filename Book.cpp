@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Book.h"
 
 Book::Book(string name, string author, string ISBN, double price)
@@ -6,10 +7,13 @@ Book::Book() {
     title = author = ISBN = "";
 }
 void Book::displayInfo() const {
-    cout << "Name: " << title << '\n';
-    cout << "Author: " << author << '\n';
-    cout << "ISBN: " << ISBN << '\n';
-    cout << "Price: " << price << '\n';
+    ostringstream output;
+    output << "Name: " << title << '\n'
+    << "Author: " << author << '\n'
+    << "ISBN: " << ISBN << '\n'
+    << "Price: " << price << '\n'
+    << "-----------------------------------------------------\n";
+    cout << output.str();
 }
 string Book::getName() const { return title; }
 string Book::getISBN() const { return ISBN; }

@@ -6,14 +6,15 @@
 class BookManagement {
 private:
     int maximumBooksSize;
-    vector <Book> books;
+    vector<Book*> books;
 public:
     BookManagement();
-    BookManagement(vector <Book> books);
-    void addBook(const Book& newBook);
+    ~BookManagement();
+    BookManagement(vector <Book*> books);
+    void addBook(const Book& book);
     void deleteBook(const Book& targetBook);
     void updateBook(const Book& oldBook, const Book& book);
-    const vector<Book>& getBooks() const;
+    vector<Book*> getBooks() const;
     int getMaximumBooksSize() const;
 };
 #endif //CPP_BOOKMANAGEMENT_H
