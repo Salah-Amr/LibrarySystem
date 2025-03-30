@@ -1,5 +1,6 @@
 #ifndef CPP_USERMANAGEMENT_H
 #define CPP_USERMANAGEMENT_H
+#pragma once
 #include "User.h"
 #include <vector>
 class UserManagement {
@@ -14,6 +15,6 @@ public:
     void deleteUser(const User& targetUser);
     void updateUser(const User& oldUser, const User& user);
     int getMaximumUsersSize() const;
-    vector<User> getUsers() const;
+    const vector<User>& getUsers() const;
 };
 #endif //CPP_USERMANAGEMENT_H

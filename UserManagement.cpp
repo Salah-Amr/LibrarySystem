@@ -21,10 +21,7 @@ void UserManagement::deleteUser(const User& targetUser) {
         cout << "user not found\n";
     }
     else {
-        for (int i = index; i < maximumUsersSize - 1; i++) {
-            users[i] = users[i + 1];
-        }
-        users.pop_back();
+        users.erase(users.begin() + index);
         maximumUsersSize--;
         cout << "user deleted successfully\n";
     }
@@ -48,6 +45,6 @@ void UserManagement::updateUser(const User& oldUser, const User& user) {
 int UserManagement::getMaximumUsersSize() const {
     return maximumUsersSize;
 }
-vector<User> UserManagement::getUsers() const{
+const vector<User>& UserManagement::getUsers() const {
     return users;
 }

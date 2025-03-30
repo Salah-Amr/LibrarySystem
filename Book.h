@@ -1,4 +1,5 @@
 #ifndef CPP_BOOK_H
+#pragma once
 #define CPP_BOOK_H
 #include <iostream>
 #include <string>
@@ -12,7 +13,7 @@ private:
 public:
     Book(string name, string author, string ISBN, double price);
     Book();
-    ~Book();
+    virtual ~Book() = default;
     virtual void displayInfo() const;
     string getName() const;
     string getAuthor() const;

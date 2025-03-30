@@ -1,4 +1,5 @@
 #ifndef CPP_LIBRARY_H
+#pragma once
 #define CPP_LIBRARY_H
 #include <iostream>
 #include <string>
@@ -10,13 +11,16 @@
 #include "BookManagement.h"
 class Library {
 private:
+    static Library* instance;
     string name;
     UserManagement userManagement;
     BookManagement bookManagement;
+    Library() {}
 public:
-    Library();
-    Library(string name);
-    Library(string name, vector <Book> books, vector <User> users);
+    static Library* getInstance() {
+        if (!instance) instance = new Library();
+        return instance;
+    }
     ~Library();
     void displayInfo() const;
     void addUser(const User& newUser);
@@ -29,9 +33,10 @@ public:
     void displayUsers() const;
     void displayBooks() const;
     string getName() const;
+    void setName(string _name);
     vector <Book> getBooks() const;
     vector <User> getUsers() const;
     int getMaximumUsersSize() const;
-    int getMaximumBoosSize() const;
+    int getMaximumBooksSize() const;
 };
 #endif

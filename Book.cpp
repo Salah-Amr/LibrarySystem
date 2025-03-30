@@ -5,9 +5,6 @@ Book::Book(string name, string author, string ISBN, double price)
 Book::Book() {
     title = author = ISBN = "";
 }
-Book::~Book() {
-    cout << "book \"" << title << "\" deleted successfully\n";
-}
 void Book::displayInfo() const {
     cout << "Name: " << title << '\n';
     cout << "Author: " << author << '\n';

@@ -1,5 +1,6 @@
 #ifndef CPP_USER_H
 #define CPP_USER_H
+#pragma once
 #include <iostream>
 #include <string>
 using namespace std;
@@ -16,6 +17,6 @@ public:
     string getUsername() const;
     string getEmail() const;
     string getPassword() const;
-    bool isEqual(User user) const;
+    bool isEqual(const User &user) const;
 };
 #endif

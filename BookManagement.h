@@ -1,5 +1,6 @@
 #ifndef CPP_BOOKMANAGEMENT_H
 #define CPP_BOOKMANAGEMENT_H
+#pragma once
 #include "Book.h"
 #include <vector>
 class BookManagement {
@@ -10,10 +11,9 @@ public:
     BookManagement();
     BookManagement(vector <Book> books);
     void addBook(const Book& newBook);
-    void addBook(Book* newBook);
     void deleteBook(const Book& targetBook);
     void updateBook(const Book& oldBook, const Book& book);
-    vector <Book> getBooks() const;
-    int getMaximumBoosSize() const;
+    const vector<Book>& getBooks() const;
+    int getMaximumBooksSize() const;
 };
 #endif //CPP_BOOKMANAGEMENT_H

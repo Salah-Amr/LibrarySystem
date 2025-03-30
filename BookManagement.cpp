@@ -9,11 +9,6 @@ void BookManagement::addBook(const Book& newBook) {
     maximumBooksSize = (int)books.size();
     cout << "book added successfully\n";
 }
-void BookManagement::addBook(Book* newBook) {
-    books.emplace_back(*newBook);
-    maximumBooksSize = (int)books.size();
-    cout << "book added successfully\n";
-}
 void BookManagement::deleteBook(const Book& targetBook) {
     int index = -1;
     for (int i = 0; i < maximumBooksSize; i++) {
@@ -26,29 +21,20 @@ void BookManagement::deleteBook(const Book& targetBook) {
         cout << "book not found\n";
     }
     else {
-        for (int i = index; i < maximumBooksSize - 1; i++) {
-            books[i] = books[i + 1];
-        }
-        books.pop_back();
-        maximumBooksSize--;
+        books.erase(books.begin() + index);
+        maximumBooksSize = (int)books.size();
         cout << "book deleted successfully\n";
     }
 }
 void BookManagement::updateBook(const Book& oldBook, const Book& book) {
-    int index = -1;
-    for (int i = 0; i < maximumBooksSize; i++) {
-        if (books[i].isEqual(oldBook)) {
-            index = i;
-            break;
+    for (Book& b : books) {
+        if (b.getISBN() == oldBook.getISBN()) {
+            b = book;
+            cout << "book updated successfully\n";
+            return;
         }
     }
-    if (index == -1) {
-        cout << "book not found\n";
-    }
-    else {
-        books[index] = book;
-        cout << "book updated successfully\n";
-    }
+    cout << "book not found\n";
 }
-vector <Book> BookManagement::getBooks() const { return books; }
-int BookManagement::getMaximumBoosSize() const { return maximumBooksSize; }
+const vector<Book>& BookManagement::getBooks() const { return books; }
+int BookManagement::getMaximumBooksSize() const { return maximumBooksSize; }
